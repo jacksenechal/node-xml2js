@@ -36,6 +36,17 @@ module.exports =
     diffeq expected, actual
     test.finish()
 
+  'test generating XML fragment': (test) ->
+    expected = '<root/>'
+    opts = {
+      renderOpts: { pretty: false }
+      fragment: true
+    }
+    builder = new xml2js.Builder(opts)
+    actual = builder.buildObject {}
+    diffeq expected, actual
+    test.finish()
+
   'test pretty by default': (test) ->
     expected = """
       <?xml version="1.0" encoding="UTF-8" standalone="yes"?>

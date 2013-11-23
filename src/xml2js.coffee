@@ -61,6 +61,7 @@ exports.defaults =
     xmldec: {'version': '1.0', 'encoding': 'UTF-8', 'standalone': true}
     doctype: null
     renderOpts: { 'pretty': true, 'indent': '  ', 'newline': '\n' }
+    fragment: false
 
 class exports.ValidationError extends Error
   constructor: (message) ->
@@ -125,7 +126,9 @@ class exports.Builder
 
     rootElement = builder.create(rootName, @options.xmldec, @options.doctype)
 
-    render(rootElement, rootObj).end(@options.renderOpts)
+    xmlDoc = render(rootElement, rootObj)
+    if @options.fragment then xmlDoc.toString(@options.renderOpts)
+    else xmlDoc.end(@options.renderOpts)
 
 class exports.Parser extends events.EventEmitter
   constructor: (opts) ->

@@ -237,6 +237,9 @@ Options for the `Builder` class
     * `xmldec.encoding` Encoding declaration, e.g. UTF-8
     * `xmldec.standalone` standalone document declaration: true or false
   * `doctype` (default `null`): optional DTD. Eg. `{'ext': 'hello.dtd'}`
+  * `fragment` (default `false`): Set this to `true` if you want to generate an XML fragement.
+    This causes the builder to skip rendering the `xmldec` and `doctype` and just render the
+    document starting with the root element.
 
 renderOpts, xmldec and doctype pass through to [xmlbuilder-js](https://github.com/oozcitak/xmlbuilder-js)
 
